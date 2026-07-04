@@ -1,0 +1,63 @@
+[gd_scene load_steps=3 format=3 uid="uid://main_demo_001"]
+
+[ext_resource type="Script" path="res://scripts/Main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/HUD.gd" id="2_hud"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+
+[node name="Obstacles" type="Node2D" parent="."]
+
+[node name="Agents" type="Node2D" parent="."]
+
+[node name="ClickIndicator" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(10, 0, 7, 7, 0, 10, -7, 7, -10, 0, -7, -7, 0, -10, 7, -7)
+color = Color(1.0, 1.0, 1.0, 0.7)
+visible = false
+
+[node name="HUD" type="CanvasLayer" parent="."]
+script = ExtResource("2_hud")
+
+[node name="Panel" type="PanelContainer" parent="HUD"]
+offset_left = 10.0
+offset_top = 10.0
+custom_minimum_size = Vector2(230, 0)
+
+[node name="Margin" type="MarginContainer" parent="HUD/Panel"]
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBox" type="VBoxContainer" parent="HUD/Panel/Margin"]
+theme_override_constants/separation = 4
+
+[node name="Title" type="Label" parent="HUD/Panel/Margin/VBox"]
+text = "Pathfinding Agent Demo"
+theme_override_font_sizes/font_size = 14
+theme_override_colors/font_color = Color(0.9, 0.9, 1.0, 1)
+
+[node name="Sep1" type="HSeparator" parent="HUD/Panel/Margin/VBox"]
+
+[node name="AgentCount" type="Label" parent="HUD/Panel/Margin/VBox"]
+text = "Agents: 0"
+theme_override_colors/font_color = Color(0.45, 1.0, 0.55, 1)
+
+[node name="MovingCount" type="Label" parent="HUD/Panel/Margin/VBox"]
+text = "Moving: 0 / 0"
+theme_override_colors/font_color = Color(1.0, 0.8, 0.3, 1)
+
+[node name="Status" type="Label" parent="HUD/Panel/Margin/VBox"]
+text = "Status: Initializing..."
+theme_override_colors/font_color = Color(0.85, 0.85, 0.85, 1)
+theme_override_font_sizes/font_size = 11
+autowrap_mode = 2
+
+[node name="Sep2" type="HSeparator" parent="HUD/Panel/Margin/VBox"]
+
+[node name="Instructions" type="Label" parent="HUD/Panel/Margin/VBox"]
+text = "Left-click: set destination"
+theme_override_colors/font_color = Color(0.6, 0.6, 0.6, 1)
+theme_override_font_sizes/font_size = 10
